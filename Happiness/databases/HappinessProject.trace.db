@@ -1654,3 +1654,8 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "date" not found [42122-232]
 	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
 	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-01-07 15:22:43.119250-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-232]
+2025-01-07 15:22:53.065243-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "UPDATE personalInfo AS i SET (happinessRating [*]= ?, sleepInfo = ?, exerciseInfo = ?,meditationInfo = ?, socializeInfo = ?) WHERE (i.id = 1 AND i.date = 2025-01-07)"; expected "., [, ,, )"; SQL statement:
+UPDATE personalInfo AS i SET (happinessRating = ?, sleepInfo = ?, exerciseInfo = ?,meditationInfo = ?, socializeInfo = ?) WHERE (i.id = 1 AND i.date = 2025-01-07) [42001-232]

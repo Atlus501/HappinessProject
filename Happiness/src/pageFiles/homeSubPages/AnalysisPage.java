@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 import databases.InfoDatabase;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -99,16 +101,20 @@ public class AnalysisPage extends Page{
 	 * This is the method that adds the data to the graph
 	 */
 	private void addData() {
-		XYChart.Series series = new XYChart.Series();
+		Series<String, Number> series = new XYChart.Series<String, Number>();
         series.setName("My Data");
 		
         String option = processOption(options.getValue());
         
-		InfoDatabase.returnHistory(option, processDate(), series);
+		List<String> dates = InfoDatabase.returnHistory(option, processDate(), series);
 		
-		graph.getData().clear();
-		graph.getData().add(series);
-	}
+		xAxis.setCategories(FXCollections.<String>observableArrayList
+				   (dates));
+		
+		if(dates.size() > 0) {
+			graph.getData().clear();
+			graph.getData().add(series);
+	}}
 	
 	/**
 	 * This is the method that processes 
@@ -162,8 +168,6 @@ public class AnalysisPage extends Page{
 		 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		xAxis.setLabel("Date");
-		xAxis.setCategories(FXCollections.<String>observableArrayList
-				   (Arrays.asList(formatter.format(today))));
 	}
 	
 	/**

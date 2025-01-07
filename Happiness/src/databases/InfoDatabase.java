@@ -4,6 +4,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.chart.XYChart;
 
@@ -247,10 +248,12 @@ public abstract class InfoDatabase extends Database{
 	 * @param series
 	 * @return
 	 */
-	public static XYChart.Series returnHistory(String field, Date date, 
-			XYChart.Series<String, Integer> series) {
+	public static List<String> returnHistory(String field, Date date, 
+			XYChart.Series<String, Number> series) {
 		String query = "SELECT "+field+", date FROM "+infoTable+" WHERE date >= ? " +
 				"AND id = ? ORDER BY date ASC";
+		
+		List<String> dates = new ArrayList<String>();
 		
 		try(PreparedStatement pstmt = connection.prepareStatement(query)){
 			pstmt.setDate(1, date);
@@ -261,17 +264,20 @@ public abstract class InfoDatabase extends Database{
 			while(rs.next()) {
 				 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				
-				series.getData().add(new XYChart.Data<String, Integer>(
-						formatter.format(rs.getDate("date")), rs.getInt(field)));
+				 String thisDate = formatter.format(rs.getDate("date"));
+				 
+				series.getData().add(new XYChart.Data<String, Number>(
+						thisDate, rs.getInt(field)));
 				
+				dates.add(thisDate);
 			}
 			
-			return series;
+			return dates;
 			
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
-			return series;
+			return dates;
 		}
 	}
 }
