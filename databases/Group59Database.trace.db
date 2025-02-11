@@ -1,0 +1,158 @@
+2024-12-24 14:50:20.076971-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE users [*]IF NOT EXISTS (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) UNIQUE NOT NULL,password VARCHAR(255))"; SQL statement:
+CREATE TABLE users IF NOT EXISTS (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) UNIQUE NOT NULL,password VARCHAR(255)) [42000-232]
+2024-12-24 14:50:20.083948-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE personalInfo [*]IF NOT EXISTS (id INT FOREIGN_KEY REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K))"; SQL statement:
+CREATE TABLE personalInfo IF NOT EXISTS (id INT FOREIGN_KEY REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)) [42000-232]
+2024-12-24 14:51:31.167010-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS personalInfo(id INT [*]FOREIGN_KEY REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K))"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(id INT FOREIGN_KEY REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)) [42001-232]
+2024-12-24 14:52:04.111458-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN_KEY[*](id) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K))"; expected "data type"; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN_KEY(id) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)) [42001-232]
+2024-12-24 14:52:21.665223-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN_KEY[*](INT id) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K))"; expected "data type"; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN_KEY(INT id) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)) [42001-232]
+2024-12-24 14:53:12.614284-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN_KEY[*](id INT) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K))"; expected "data type"; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN_KEY(id INT) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)) [42001-232]
+2024-12-24 14:53:59.222709-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ID" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN KEY(id) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)) [42122-232]
+	at com.h2database@2.3.232/org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at com.h2database@2.3.232/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at com.h2database@2.3.232/org.h2.message.DbException.get(DbException.java:223)
+	at com.h2database@2.3.232/org.h2.message.DbException.get(DbException.java:199)
+	at com.h2database@2.3.232/org.h2.table.Table.getColumn(Table.java:786)
+	at com.h2database@2.3.232/org.h2.table.IndexColumn.mapColumns(IndexColumn.java:184)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:215)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at com.h2database@2.3.232/org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at com.h2database@2.3.232/org.h2.command.ddl.CreateTable.update(CreateTable.java:134)
+	at com.h2database@2.3.232/org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at com.h2database@2.3.232/org.h2.command.Command.executeUpdate(Command.java:304)
+	at com.h2database@2.3.232/org.h2.command.Command.executeUpdate(Command.java:248)
+	at com.h2database@2.3.232/org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at com.h2database@2.3.232/org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at databases.Database.createDatabase(Database.java:52)
+	at databases.Database.<init>(Database.java:40)
+	at application.Main.main(Main.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics@22.0.2/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:464)
+	at javafx.graphics@22.0.2/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1135)
+2024-12-24 15:03:40.646623-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ID" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN KEY(id) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)) [42122-232]
+	at com.h2database@2.3.232/org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at com.h2database@2.3.232/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at com.h2database@2.3.232/org.h2.message.DbException.get(DbException.java:223)
+	at com.h2database@2.3.232/org.h2.message.DbException.get(DbException.java:199)
+	at com.h2database@2.3.232/org.h2.table.Table.getColumn(Table.java:786)
+	at com.h2database@2.3.232/org.h2.table.IndexColumn.mapColumns(IndexColumn.java:184)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:215)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at com.h2database@2.3.232/org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at com.h2database@2.3.232/org.h2.command.ddl.CreateTable.update(CreateTable.java:134)
+	at com.h2database@2.3.232/org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at com.h2database@2.3.232/org.h2.command.Command.executeUpdate(Command.java:304)
+	at com.h2database@2.3.232/org.h2.command.Command.executeUpdate(Command.java:248)
+	at com.h2database@2.3.232/org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at com.h2database@2.3.232/org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at databases.Database.executeQuery(Database.java:63)
+	at databases.Database.<init>(Database.java:44)
+	at application.Main.main(Main.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics@22.0.2/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:464)
+	at javafx.graphics@22.0.2/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1135)
+2024-12-24 15:05:57.373976-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ID" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS users (PRIMARY KEY(id), username VARCHAR(255) UNIQUE NOT NULL,password VARCHAR(255)) [42122-232]
+	at com.h2database@2.3.232/org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at com.h2database@2.3.232/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at com.h2database@2.3.232/org.h2.message.DbException.get(DbException.java:223)
+	at com.h2database@2.3.232/org.h2.message.DbException.get(DbException.java:199)
+	at com.h2database@2.3.232/org.h2.table.Table.getColumn(Table.java:786)
+	at com.h2database@2.3.232/org.h2.table.IndexColumn.mapColumns(IndexColumn.java:184)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:121)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at com.h2database@2.3.232/org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at com.h2database@2.3.232/org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at com.h2database@2.3.232/org.h2.command.ddl.CreateTable.update(CreateTable.java:134)
+	at com.h2database@2.3.232/org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at com.h2database@2.3.232/org.h2.command.Command.executeUpdate(Command.java:304)
+	at com.h2database@2.3.232/org.h2.command.Command.executeUpdate(Command.java:248)
+	at com.h2database@2.3.232/org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at com.h2database@2.3.232/org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at databases.Database.executeQuery(Database.java:63)
+	at databases.Database.<init>(Database.java:41)
+	at application.Main.main(Main.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics@22.0.2/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:464)
+	at javafx.graphics@22.0.2/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1135)
+2024-12-24 15:05:57.387090-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(FOREIGN KEY(id) REFERENCES users(id), happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)) [42102-232]
+2024-12-24 15:06:59.321982-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS personalInfo(id INT, happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K))[*],FOREIGN KEY(id) REFERENCES users(id)"; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(id INT, happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K)),FOREIGN KEY(id) REFERENCES users(id) [42000-232]
+2024-12-24 15:09:16.332048-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "CONSTRAINT_7" depends on it; SQL statement:
+DROP TABLE users [90107-232]
+	at com.h2database@2.3.232/org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at com.h2database@2.3.232/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at com.h2database@2.3.232/org.h2.message.DbException.get(DbException.java:223)
+	at com.h2database@2.3.232/org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at com.h2database@2.3.232/org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at com.h2database@2.3.232/org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at com.h2database@2.3.232/org.h2.command.Command.executeUpdate(Command.java:304)
+	at com.h2database@2.3.232/org.h2.command.Command.executeUpdate(Command.java:248)
+	at com.h2database@2.3.232/org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at com.h2database@2.3.232/org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at databases.Database.executeQuery(Database.java:63)
+	at databases.Database.<init>(Database.java:41)
+	at application.Main.main(Main.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics@22.0.2/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:464)
+	at javafx.graphics@22.0.2/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1135)
+2024-12-24 15:09:42.120061-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PERSONALINFO" not found; SQL statement:
+DROP TABLE personalInfo [42102-232]
+2024-12-24 15:11:54.976769-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS personalInfo(id INT, happinessRating INT, sleepInfo INT,exerciseInfo INT, socializeInfo INT,journalEntry CLOB(10K),FOREIGN KEY(id) REFERENCES users(id)) [42102-232]
+2024-12-24 15:11:54.991155-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PERSONALINFO" not found; SQL statement:
+DROP TABLE personalInfo [42102-232]
+2024-12-24 15:11:54.995203-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DROP TABLE users [42102-232]
+2024-12-25 14:20:35.765696-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PERSONALINFO" not found; SQL statement:
+DROP TABLE personalInfo [42102-232]
+2024-12-25 14:20:35.778824-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DROP TABLE users [42102-232]
+2024-12-25 14:21:22.843130-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PERSONALINFO" not found; SQL statement:
+DROP TABLE personalInfo [42102-232]
+2024-12-25 14:21:22.852112-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DROP TABLE users [42102-232]
